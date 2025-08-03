@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+   <url>
+      <loc>https://www.mildestinos.com.br/</loc>
+      <changefreq>monthly</changefreq>
+      <priority>1.0</priority>
+   </url>
+   <url>
+      <loc>https://www.mildestinos.com.br/#sobre</loc>
+   </url>
+   
+   <url>
+      <loc>https://www.mildestinos.com.br/#servicos</loc>
+   </url>
+   <url>
+      <loc>https://www.mildestinos.com.br/#diferenciais</loc>
+   </url>
+   <url>
+      <loc>https://www.mildestinos.com.br/#contato</loc>
+   </url>
+   <url>
+      <loc>https://www.mildestinos.com.br/whatsapp.html</loc>
+   </url>
+</urlset>
