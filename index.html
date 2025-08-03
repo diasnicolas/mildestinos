@@ -67,17 +67,6 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
 
-        .read-more-content {
-            overflow: hidden;
-            max-height: 15em;
-            /* Aproximadamente 5 linhas */
-            transition: max-height 0.5s ease;
-        }
-
-        .read-more-content.expanded {
-            max-height: 1000px;
-        }
-
         .floating-whatsapp {
             position: fixed;
             bottom: 20px;
@@ -237,7 +226,7 @@
                     <div class="md:w-1/2 md:pr-10">
                         <h2 class="text-3xl font-bold mb-6 text-primary">Sobre nós</h2>
             
-                        <div class="read-more-content" id="about-content">
+                        <div class="relative max-h-[245px] overflow-hidden transition-all duration-500 ease-in-out" id="about-content">
                             <p class="text-lg text-gray-700 mb-4 text-justify">A 1000 Destinos é uma agência de viagens e turismo
                                 comprometida em proporcionar experiências únicas e memoráveis para nossos clientes.
                                 Fundada com a missão de tornar viagens acessíveis e descomplicadas, nossa equipe
@@ -258,14 +247,11 @@
                                 oferecendo serviços de qualidade com preços que cabem no seu bolso. Afinal, nosso slogan
                                 diz tudo: <span class="font-medium">"Viaje + e pague menos"</span>.</p>
                         </div>
-                        <button id="read-more-btn" class="mt-4 text-secondary hover:text-primary font-medium flex items-center">
+                    <div class="mt-4">
+                        <button id="toggle-sobre" class="text-primary font-semibold hover:underline">
                             Ler mais
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                    clip-rule="evenodd" />
-                            </svg>
                         </button>
+                    </div>
                     </div>
 
                     <div class="mb-8 md:mb-0 w-full max-w-[350px] h-auto">
@@ -318,7 +304,7 @@
                         </div>
                         <h3 class="text-xl font-bold text-primary mb-2">Pacotes de Viagens</h3>
                         <p class="text-gray-700 text-justify">Pacotes completos para os mais diversos destinos, incluindo passagens,
-                            hospedagem, traslados e passeios, tudo planejado para sua comodidade.</p>
+                            hospedagem, translados e passeios, tudo planejado para sua comodidade.</p>
                     </div>
 
                     <div
@@ -630,15 +616,19 @@
         });
 
         // Read more functionality
-        const readMoreBtn = document.getElementById('read-more-btn');
-        const aboutContent = document.getElementById('about-content');
+       const toggleBtn = document.getElementById('toggle-sobre');
+        const textoSobre = document.getElementById('about-content');
 
-        readMoreBtn.addEventListener('click', () => {
-            aboutContent.classList.toggle('expanded');
-            if (aboutContent.classList.contains('expanded')) {
-                readMoreBtn.innerHTML = 'Ler menos <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd" /></svg>';
+        toggleBtn.addEventListener('click', () => {
+            const expanded = textoSobre.classList.contains('max-h-[245px]');
+            if (expanded) {
+                textoSobre.classList.remove('max-h-[245px]');
+                textoSobre.classList.add('max-h-[2000px]');
+                toggleBtn.textContent = 'Ler menos';
             } else {
-                readMoreBtn.innerHTML = 'Ler mais <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" /></svg>';
+                textoSobre.classList.add('max-h-[245px]');
+                textoSobre.classList.remove('max-h-[2000px]');
+                toggleBtn.textContent = 'Ler mais';
             }
         });
 
